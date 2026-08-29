@@ -18,7 +18,7 @@ jobs:
 
       - name: Run Repo Health Check
         id: health
-        uses: RahilAlam929/repo-health-action@v1.2
+        uses: RahilAlam929/repo-health-action@v1
         with:
           min-score: "80"
 
