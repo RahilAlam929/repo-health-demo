@@ -1,8 +1,12 @@
 name: Repo Health
 
 on:
-  push:
   pull_request:
+  push:
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   health:
@@ -12,11 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check repository health
+      - name: Run Repo Health Check
         id: health
         uses: RahilAlam929/repo-health-action@v1
 
-      - name: Show health result
+      - name: Show Health Report
         run: |
           echo "🏥 Health Score: ${{ steps.health.outputs.health-score }}/100"
           echo "🎓 Grade: ${{ steps.health.outputs.grade }}"
