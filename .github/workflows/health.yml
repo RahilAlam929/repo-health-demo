@@ -1,0 +1,22 @@
+name: Repo Health
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check repository health
+        id: health
+        uses: RahilAlam929/repo-health-action@v1
+
+      - name: Show health result
+        run: |
+          echo "🏥 Health Score: ${{ steps.health.outputs.health-score }}/100"
+          echo "🎓 Grade: ${{ steps.health.outputs.grade }}"
